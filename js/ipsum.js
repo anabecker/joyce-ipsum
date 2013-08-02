@@ -3,8 +3,10 @@
 //document ready is a safety precaution that makes sure all of the HTML document has loaded before we try to add behavior.
 $(document).ready(function(){
 
-//Start event listener for click
-$("#ipsum-form").submit(function() { 
+// $("#paragraph-holder").hide();
+
+//define lorem ipsum function
+function ipsum () {
   var paragraphs = '';
 
 //Determine which of the check boxes is checked 
@@ -17,17 +19,21 @@ $("#ipsum-form").submit(function() {
   var words = [];
 
 //Create an array of words to randomize later
-  var words_bob = ["bob", "reginald t moneybags", "mc hammer", "vanilla ice", "@withloudhands", "remote-control helicopters", "kill your idols", "github hoodie", "i don't care"];
-  var words_nobob = ["sunac", "rails", "febreze", "feelings friday", "drilling", "sinatra", "brita", "pizza", "beer", "number seven subs", "smoothie", "blue dog cafe", "shit avi says", "friday after flatiron"];  
-  var words_all = words_bob.concat(words_nobob);
+  var dubliners = ["Buck Mulligan", "Stately, plump", "mc hammer", "vanilla ice", "@withloudhands", "remote-control helicopters", "kill your idols", "github hoodie", "i don't care"];
+  var portrait = ["bob", "reginald t moneybags", "mc hammer", "vanilla ice", "@withloudhands", "remote-control helicopters", "kill your idols", "github hoodie", "i don't care"];
+  var ulysses = ["yes I said yes I will Yes", "ineluctable modality of the visible", "Love loves to love love", "stately", "plump", "Buck Mulligan", "Gerty MacDowell", "ben Bloom Elijah", "Bloom", "Stephen", "Dedalus", "Poldy", "Molly", "la ci darem la mano", "mellow", "yellow", "smellow", "melons", "kidneys", "7 Eccles Street", "Davy Byrne&rsquo;s", "burgundy", "gorgonzola", "Blazes Boylan", "night town", "seedcake", "Sandycove", "Howth Head", "Rudy", "sixteen", "and", "soft", "Sandymount strand", "like a shot off a shovel", "rhododendrons", "sweets", "Sinbad the Sailor", "Tinbad the Tailor", "love", "song", "oxen of the sun", "Penelope", "Ithaca", "Proteus", "Circe", "Sirens", "fortyfoot", "faintly scented urine", "Martha", "letter", "sixteen", "the citizen", "contransmagnificandjewbangtantiality", "Kinch"];  
+  var words_all = ulysses;
 
 //ELSE IF determines which array of words to show the user
-  if (chosen_button == "straight-up") {
-   words = words_all;
-} else if (chosen_button == "all-bob") {
-   words = words_bob; 
+  if (chosen_button == "dubliners") {
+   words = dubliners;
+} else if (chosen_button == "portrait") {
+   words = portrait; 
+} else if (chosen_button == "ulysses") {
+   words = ulysses; 
 } else {
-words = words_nobob; }
+words = words_all;
+}
 
 //Vary the number of sentences in each paragraph randomly
 var sentence_number = Math.floor( (Math.random()+4) * 2 );
@@ -60,7 +66,13 @@ for ( var x = 0; x < words.length; x++ ) {
   var words_random = fisherYates(words);
 
 //Convert array to string with no commas or quotes, add period to end
-  var sentence = words_random.toString().replace(/,/g, ' ') + '. ';
+
+  //Set a sentence length between 8 and 25 words, based on average readibility
+  var sentence_length = Math.floor(Math.random() *(15 - 7 + 1) + 7);
+
+  var sentence_random = words_random.slice(1, sentence_length).toString();
+
+  var sentence = sentence_random.toString().replace(/,/g, ' ') + '. ';
 
 //Capitalize first letter in string
   function capitalizeFirstLetter(string) {
@@ -76,13 +88,38 @@ for ( var x = 0; x < words.length; x++ ) {
 //End the third FOR loop that builds and spaces paragraphs from sentence groups
     }
 
-$("#print-paragraphs").empty().html(paragraphs);
+// $("#print-paragraphs").animate({
+//   opacity: 0,
+//   top: "+=25"
+//   }, 1000, function(){
+//       $("#print-paragraphs").empty().html(paragraphs).delay(500).css("opacity", 0);
+//       $("#print-paragraphs").css("opacity", 1);
+//     }
+//   )
+
+function paragraphSwitch(){
+  $("#print-paragraphs").animate({top:"+=25", opacity:0},1000).queue(function(){
+    $(this).empty().html(paragraphs);
+    $(this).dequeue();
+  }).animate({top:"-=25", opacity:1},1000);
+}
+
+paragraphSwitch();
 
 //Prevent form from actually submitting so page does not reload
 return false; 
 
-//End jQuery event listener
-  });
+//function
+  }
+
+$("#ipsum-form").submit(function(e){
+  e.preventDefault();
+  ipsum();
+});
+
+// $("#paragraph_count").blur(function(){
+//   ipsum();
+// })
 
 //End document ready
 });

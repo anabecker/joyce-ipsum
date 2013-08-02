@@ -1,4 +1,6 @@
-/*Reset brower specfic CSS*/
+@import url(http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400);
+
+/*Reset browser specfic CSS*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -46,16 +48,22 @@ table {
   border-spacing: 0;
 }
 
-/*Start Map CSS*/
+
+html{
+  min-height:100%;
+}
+
 body{
-background-color:#333333;
-color:#ffffff;
-font-size: 1em;
+background-color:#ffff41;
+color:#333333;
+font-size: 62.5%;
 line-height: 1.5em;
 font-weight:300px;
-font-family: 'Quattrocento Sans', sans-serif;
+font-family: 'Gentium Book Basic', serif;
 margin: 0 auto;
-width: 750px;
+min-height:100%;
+/*background:url('../images/joyce.png') no-repeat left bottom #ffff41;*/
+background-position:fixed;
 }
 
 header {
@@ -63,7 +71,7 @@ header {
 }
 
 h1 {
-font-size: 2em;
+font-size: 4em;
 margin-bottom: .5em;
 line-height: 1em;
 font-weight: bold;
@@ -77,12 +85,49 @@ line-height: 1.5em;
 margin-bottom: 1em;
 }
 
-#print-paragraphs {
-	margin-top: 20px;
-	margin-bottom: 40px;
+p{
+  font-size:1.8em;
+  line-height:1.8em;
+  color:#555555;
+  margin-bottom:1em;
+}
+
+.container{
+  margin-top:4em;
+  max-width:65em;
 }
 
 
+label{
+  font-size:1.8em;
+  line-height:1.8em;
+}
+
+#print-paragraphs {
+	margin-top: 50px;
+	margin-bottom: 40px;
+  position:relative;
+  /*transition: 1s ease-in-out;*/
+}
+
+
+input#paragraph_count{
+  border-radius:4px;
+  border:1px solid #ccc;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+   appearance: none;
+  background:#fff;
+  margin-left:15px;
+  height: 30px;
+  width:35px;
+  font-size:1.8em;
+  font-family:'Gentium Book Basic', serif;
+}
+
+input:focus{
+  border:1px solid #555;
+}
 
 strong {
   font-weight: bold;
@@ -91,14 +136,15 @@ strong {
 
 
 #submit {
-    background-color: #C43512;
+    background-color: #555555;
     border: medium none;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 4px;
     color: #F2F2F2;
-    font-size: 1em;
+    font-size: 1.5em;
     margin-top: 1em;
-    padding: 2px;
-    width: 75px;
+    padding: 1em;
+    font-family:'Gentium Book Basic', serif;
+    display: block;
 }
 
 
