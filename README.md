@@ -1,4 +1,4 @@
-flatiron-ipsum
+Joyce-ipsum
 ==============
 
-Code to create a lorem ipsum text generator with words related to the Flatiron School. Uses JavaScript and jQuery only.
+Code to create a lorem ipsum text generator with words related to James Joyce's Ulysses. Uses JavaScript and jQuery only. Largely inspired / yoinked from flatiron-ipsum by meowist
