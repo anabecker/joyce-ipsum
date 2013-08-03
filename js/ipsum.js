@@ -7,6 +7,7 @@ $(".error").hide();
 
 //define lorem ipsum function
 function ipsum () {
+
   var paragraphs = '';
 
 //Determine which of the check boxes is checked 
@@ -97,6 +98,7 @@ function paragraphSwitch(){
     $(this).empty().html(paragraphs);
     $(this).dequeue();
   }).animate({top:"-=25", opacity:1},1000);
+  $(".joyce-holder").animate({"opacity": 0.5},1500);
 }
 
 paragraphSwitch();
@@ -104,24 +106,28 @@ paragraphSwitch();
 //Prevent form from actually submitting so page does not reload
 return false; 
 
-//function
-  }
+//function ipsum
+}
 
+//numbers regex
+var numbers = /^[0-9]+$/;
+
+
+//check if paragraph input has a value, if it does submit the form
 $("#ipsum-form").submit(function(e){
-  e.preventDefault();
   var paragraphNum = $("#paragraph_count").val();
-  if (paragraphNum === ""){
-    $(".error").fadeIn(300);
-  }else{
+  e.preventDefault();
+  if (paragraphNum.match(numbers)){
+    $(".joyce-holder").animate({opacity: 0, top: 0},300);
     ipsum();
     $(".error").fadeOut(300);
+  }else{
+    $(".error").fadeIn(300);
   }
 });
 
+//check if paragraph count input is a number
 $("#paragraph_count").blur(function(){
-
-  var numbers = /^[0-9]+$/;
-
   if ($("#paragraph_count").val().match(numbers)){
     $("#submit").css("opacity", 1);
     $(".error").fadeOut(300);
@@ -129,7 +135,7 @@ $("#paragraph_count").blur(function(){
     $(".error").fadeIn(300);
     $("#submit").css("opacity", 0.7);
   }
-})
+  })
 
 //End document ready
 });
