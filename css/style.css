@@ -86,7 +86,7 @@ margin-bottom: 1em;
 
 p, span{
   font-size:1.9em;
-  line-height:2em;
+  line-height:2.1em;
   color:#555555;
   margin-bottom:1em;
 }
@@ -119,6 +119,9 @@ label{
   /*transition: 1s ease-in-out;*/
 }
 
+#print-paragraphs p{
+  margin-bottom:1.7em;
+}
 
 input#paragraph_count{
   border-radius:4px;
