@@ -3,7 +3,7 @@
 //document ready is a safety precaution that makes sure all of the HTML document has loaded before we try to add behavior.
 $(document).ready(function(){
 
-// $("#paragraph-holder").hide();
+$(".error").hide();
 
 //define lorem ipsum function
 function ipsum () {
@@ -19,9 +19,9 @@ function ipsum () {
   var words = [];
 
 //Create an array of words to randomize later
-  var dubliners = ["Buck Mulligan", "Stately, plump", "mc hammer", "vanilla ice", "@withloudhands", "remote-control helicopters", "kill your idols", "github hoodie", "i don't care"];
-  var portrait = ["bob", "reginald t moneybags", "mc hammer", "vanilla ice", "@withloudhands", "remote-control helicopters", "kill your idols", "github hoodie", "i don't care"];
-  var ulysses = ["yes I said yes I will Yes", "ineluctable modality of the visible", "Love loves to love love", "stately", "plump", "Buck Mulligan", "Gerty MacDowell", "ben Bloom Elijah", "Bloom", "Stephen", "Dedalus", "Poldy", "Molly", "la ci darem la mano", "mellow", "yellow", "smellow", "melons", "kidneys", "7 Eccles Street", "Davy Byrne&rsquo;s", "burgundy", "gorgonzola", "Blazes Boylan", "night town", "seedcake", "Sandycove", "Howth Head", "Rudy", "sixteen", "and", "soft", "Sandymount strand", "like a shot off a shovel", "rhododendrons", "sweets", "Sinbad the Sailor", "Tinbad the Tailor", "love", "song", "oxen of the sun", "Penelope", "Ithaca", "Proteus", "Circe", "Sirens", "fortyfoot", "faintly scented urine", "Martha", "letter", "sixteen", "the citizen", "contransmagnificandjewbangtantiality", "Kinch"];  
+  var dubliners = ["Araby", "Eveline", "Snow"];
+  var portrait = ["Stephen", "Dedalus", "pull out his eyes, apologize", "bird"];
+  var ulysses = ["yes I said yes I will Yes", "ineluctable modality of the visible", "Love loves to love love", "stately", "plump", "Buck Mulligan", "Gerty MacDowell", "ben Bloom Elijah", "Bloom", "Stephen", "Dedalus", "Poldy", "Molly", "la ci darem la mano", "mellow", "yellow", "smellow", "melons", "kidneys", "7 Eccles Street", "Davy Byrne&rsquo;s", "burgundy", "gorgonzola", "Blazes Boylan", "night town", "seedcake", "Sandycove", "Howth Head", "Rudy", "sixteen", "and", "soft", "Sandymount strand", "like a shot off a shovel", "rhododendrons", "sweets", "cyclops", "Sinbad the Sailor", "Tinbad the Tailor", "love", "song", "oxen of the sun", "Penelope", "Ithaca", "Proteus", "Circe", "Sirens", "fortyfoot", "faintly scented urine", "Martha", "letter", "sixteen", "the citizen", "contransmagnificandjewbangtantiality", "Kinch", "Frseeeeeeeeeeeeeeeeeeeefrong"];  
   var words_all = ulysses;
 
 //ELSE IF determines which array of words to show the user
@@ -88,17 +88,12 @@ for ( var x = 0; x < words.length; x++ ) {
 //End the third FOR loop that builds and spaces paragraphs from sentence groups
     }
 
-// $("#print-paragraphs").animate({
-//   opacity: 0,
-//   top: "+=25"
-//   }, 1000, function(){
-//       $("#print-paragraphs").empty().html(paragraphs).delay(500).css("opacity", 0);
-//       $("#print-paragraphs").css("opacity", 1);
-//     }
-//   )
+//add in the ending
+paragraphs+="<p>Trieste-Zurich-Paris 1914-1921</p>";
 
+//paragraph fade-in
 function paragraphSwitch(){
-  $("#print-paragraphs").animate({top:"+=25", opacity:0},1000).queue(function(){
+  $("#print-paragraphs").animate({top:"+=25", opacity:0},600).queue(function(){
     $(this).empty().html(paragraphs);
     $(this).dequeue();
   }).animate({top:"-=25", opacity:1},1000);
@@ -114,8 +109,27 @@ return false;
 
 $("#ipsum-form").submit(function(e){
   e.preventDefault();
-  ipsum();
+  var paragraphNum = $("#paragraph_count").val();
+  if (paragraphNum === ""){
+    $(".error").fadeIn(300);
+  }else{
+    ipsum();
+    $(".error").fadeOut(300);
+  }
 });
+
+$("#paragraph_count").blur(function(){
+
+  var numbers = /^[0-9]+$/;
+
+  if ($("#paragraph_count").val().match(numbers)){
+    $("#submit").css("opacity", 1);
+    $(".error").fadeOut(300);
+  }else{
+    $(".error").fadeIn(300);
+    $("#submit").css("opacity", 0.7);
+  }
+})
 
 // $("#paragraph_count").blur(function(){
 //   ipsum();

@@ -12,11 +12,37 @@
 </head>
 	
 <body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
 <div class="container clearfix">
+	<div class="nav grid_12">
+		<div class="grid_4 pull-right">
+			<ul class="social">
+				<li>
+					<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://joyceipsum.com/ulysses" data-text="James Joyce's Ulysses Ipsum" data-via="UlyssesIpsum">Tweet</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+				</li>
+				<li>
+					<div class="fb-like" data-href="http://www.anabeckerdesign.com" data-width="450" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+				</li>
+			</ul>
+		</div>
+	</div>
 	<div class="grid_12">
 	<h1>Generate your Ulysses Ipsum</h1>
+	</div>
+	<div class="grid_12">
 		<form id="ipsum-form" action="#" method="post">
-			<label for="paragraph_count">Paragraphs:</label><input id="paragraph_count" type="text" maxlength="2" />
+			<label for="paragraph_count">Paragraphs:</label><input id="paragraph_count" type="text" maxlength="2" /><span class="error">Enter a number. How about 7?</span>
 						<!-- default choice on load -->
 						<input id="ulysses" type="radio" name="choice" value="ulysses" style="display:none" />
 						<!-- dubliners -->
@@ -33,10 +59,19 @@
 						<input id="words_all" type="radio" name="choice" value="words_all" />
 						<label for="words_all">All of it</label><br> -->
 						<!-- submit button -->
-						<input type="submit" id="submit" value="Submit" />
+						<input type="submit" id="submit" value="Generate" />
 			</form>
-		<div id="print-paragraphs"></div>
+		</div>
+		<div class="grid_12" id="print-paragraphs"></div>
 	</div>
+	<footer>
+			<div class="container clearfix">
+				<div class="grid_12">
+					<p>Made with <span class="hearts">&hearts;</span> and nerdery by <a target="_blank" href="http://www.twitter.com/ana_becker">@ana_becker</a> based on <a target="_blank" href="http://meowist.com/fi/">Flatiron Ipsum</a> by <a target="_blank"href="http://www.twitter.com/jkestler">@jkestler</a> 
+				</div>
+			</div>
+		</div>
+	</footer>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/jquery-1.8.0.min.js"><\/script>')</script>
 	<script src="js/ipsum.js"></script>
