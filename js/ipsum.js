@@ -131,10 +131,6 @@ $("#paragraph_count").blur(function(){
   }
 })
 
-// $("#paragraph_count").blur(function(){
-//   ipsum();
-// })
-
 //End document ready
 });
  
