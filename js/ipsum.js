@@ -22,7 +22,7 @@ function ipsum () {
 //Create an array of words to randomize later
   var dubliners = ["Araby", "Eveline", "Snow"];
   var portrait = ["Stephen", "Dedalus", "pull out his eyes, apologize", "bird"];
-  var ulysses = ["yes I said yes I will Yes", "ineluctable modality of the visible", "Love loves to love love", "stately", "plump", "Buck Mulligan", "Gerty MacDowell", "ben Bloom Elijah", "Bloom", "Stephen", "Dedalus", "Poldy", "Molly", "la ci darem la mano", "mellow", "yellow", "smellow", "melons", "kidneys", "7 Eccles Street", "Davy Byrne&rsquo;s", "burgundy", "gorgonzola", "Blazes Boylan", "night town", "seedcake", "Sandycove", "Howth Head", "Rudy", "sixteen", "and", "soft", "Sandymount strand", "like a shot off a shovel", "rhododendrons", "sweets", "cyclops", "Sinbad the Sailor", "Tinbad the Tailor", "love", "song", "oxen of the sun", "Penelope", "Ithaca", "Proteus", "Circe", "Sirens", "fortyfoot", "faintly scented urine", "Martha", "letter", "sixteen", "the citizen", "contransmagnificandjewbangtantiality", "Kinch", "Frseeeeeeeeeeeeeeeeeeeefrong"];  
+  var ulysses = ["yes I said yes I will Yes", "ineluctable modality of the visible", "Love loves to love love", "stately", "plump", "Buck Mulligan", "Gerty MacDowell", "ben Bloom Elijah", "Bloom", "Stephen", "Dedalus", "Poldy", "Molly", "la ci darem la mano", "mellow", "yellow", "smellow", "melons", "kidneys", "7 Eccles Street", "Davy Byrne&rsquo;s", "burgundy", "gorgonzola", "Blazes Boylan", "nighttown", "seedcake", "Sandycove", "Howth Head", "Rudy", "sixteen", "and", "soft", "Sandymount strand", "like a shot off a shovel", "rhododendrons", "sweets of sin", "cyclops", "Sinbad the Sailor", "Tinbad the Tailor", "love", "song", "oxen of the sun", "Penelope", "Ithaca", "Proteus", "Circe", "Sirens", "fortyfoot", "faintly scented urine", "Martha", "letter", "sixteen", "the citizen", "contransmagnificandjewbangtantiality", "Kinch", "Frseeeeeeeeeeeeeeeeeeeefrong", "the snotgreen sea", "the scrotumtightening sea", "portals of discovery", "navel", "metempsychosis", "met him pike hoses", "O, rocks", "omphalos", "Agenbite of Inwit", "moody brooding", "he proves by algebra", "transmigration"];  
   var words_all = ulysses;
 
 //ELSE IF determines which array of words to show the user
@@ -118,7 +118,7 @@ $("#ipsum-form").submit(function(e){
   var paragraphNum = $("#paragraph_count").val();
   e.preventDefault();
   if (paragraphNum.match(numbers)){
-    $(".joyce-holder").animate({opacity: 0, top: 0},300);
+    $(".joyce-holder").animate({opacity: 0, top: 0},600);
     ipsum();
     $(".error").fadeOut(300);
   }else{
